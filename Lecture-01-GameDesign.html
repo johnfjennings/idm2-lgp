@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="John Jennings" />
+  <title>IDM1: Ludology and Game Play</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="libs/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="libs/reveal.js-3.3.0.1/css/theme/sky.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">IDM1: Ludology and Game Play</h1>
+  <h1 class="subtitle">Lecture 1 - Game Designer</h1>
+    <h2 class="author">John Jennings</h2>
+    <h3 class="date">Academic Year 2017-2018</h3>
+</section>
+
+<section><section id="games-through-the-ages" class="titleslide slide level1"><h1>Games through the Ages</h1></section><section id="jung" class="slide level2">
+<h2>Jung</h2>
+<blockquote>
+<p>One of the most difficult tasks people can perform, however much others may despise it, is the invention of good games. - C.G. Jung</p>
+</blockquote>
+<p><img src="images/CGJung.jpg" style="width:20.0%" /></p>
+</section><section id="games" class="slide level2">
+<h2>Games</h2>
+<p><img src="images/senet.jpg" style="width:40.0%" /></p>
+<ul>
+<li>Games are an integral part of all known human cultures.<a href="#/fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a><a href="#/fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a><a href="#/fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></li>
+<li>Digital games are just a new expression of this ancient method of social interaction.</li>
+</ul>
+<aside class="notes">
+Board games have a very long history: Senet, generally considered the oldest board game in the world, dates to Predynastic Egypt (c. 3,100 BCE), while the Royal Game of Ur comes from Ancient Sumeria (c. 2,600 BCE). Evidence of other, relatively younger games has been found in ancient Chinese, Roman, and Ethiopian cultures, as well as among the Germanic and Celtic peoples in Northern Europe. It seems that as long as there’s civilization, there’s also free time (aka boredom), and people have always invented entertaining (and competitive) ways to pass it.
+</aside>
+</section><section id="senet" class="slide level2">
+<h2>Senet</h2>
+<p><img src="images/senet2.jpg" style="width:40.0%" /></p>
+<p>Hieroglyphs depicting Egyptian Senet players date all the way back to 3100 BCE. Even King Tut had a copy. It spent around three millennia lingering in his tomb before modern archaeologists got their hands on it.</p>
+</section><section id="latrunculi-or-mercenaries" class="slide level2">
+<h2>Latrunculi (or “Mercenaries”)</h2>
+<p><img src="images/Latrunculi.jpg" style="width:40.0%" /></p>
+<p>One might call this Rome’s answer to chess: The elegant strategy game required armies of black and white pieces to duke it out across boards made with wood, marble, stone, or silver.</p>
+</section><section id="ur" class="slide level2">
+<h2>Ur</h2>
+<p><img src="images/Ur.jpg" style="width:40.0%" /></p>
+<p>Ur (aka: “The Game of Twenty Squares”) has been around since at least 3000 BCE and took hold in ancient societies from Egypt to India.</p>
+</section><section id="patolli" class="slide level2">
+<h2>Patolli</h2>
+<p><img src="images/Patolli.png" style="width:40.0%" /></p>
+<p>Throughout the Aztec empire, noble families and peasants alike were known to relish patolli. Participants threw dotted stones or beans to determine how their pieces would move over a cross-shaped board. Gambling was usually involved.</p>
+</section><section id="mehen" class="slide level2">
+<h2>Mehen</h2>
+<p><img src="images/Mehen.jpg" style="width:40.0%" /></p>
+<p>Experts aren’t sure what the object of this ancient Egyptian game was, but, in any event, it involved a board shaped like a coiled snake. Marbles may have also been involved.</p>
+</section><section id="petteia" class="slide level2">
+<h2>Petteia</h2>
+<p><img src="images/Petteia.jpg" style="width:40.0%" /></p>
+<p>Think checkers, except instead of eliminating an opponent’s piece by leaping over it, you’d sandwich it between two of yours. A staple in ancient Greece, Petteia parables proved irresistible to many great thinkers. Take, for instance, Aristotle, who claimed that “a citizen without a state may be compared to an isolated piece in a game of petteia.”</p>
+</section><section id="go" class="slide level2">
+<h2>Go</h2>
+<p><img src="images/go.jpg" style="width:40.0%" /></p>
+<p>Go likely originated in China between 2500 and 4000 years ago</p>
+</section><section id="creating-a-good-game" class="slide level2">
+<h2>Creating a good game</h2>
+<ul>
+<li>Creating a good game is a challenging task
+<ul>
+<li>requires a playful approach</li>
+<li>and a systematic solution</li>
+</ul></li>
+<li>Game Designers are
+<ul>
+<li>Part engineer</li>
+<li>part entertainer</li>
+<li>part mathematician</li>
+<li>part social director</li>
+</ul></li>
+</ul>
+</section><section id="role-of-game-designer" class="slide level2">
+<h2>role of game designer</h2>
+<ul>
+<li><p>the role of the game designer is to craft a set of rules within which there are means and motivation to play.</p></li>
+<li>Whether it be folk games, board games, arcade games, or massively multiplayer online games</li>
+<li><p>the art of game design has always been to create that elusive combination of challenge, competition, and interaction that players just call “fun.”</p></li>
+</ul>
+</section><section id="what-players-want" class="slide level2">
+<h2>What Players Want</h2>
+<blockquote>
+<p>“But when I come to think more on it, the biggest reason it has become that popular is Mr. Tajiri, the main developer and creator of Pokemon, didn’t start this project with a business sense. In other words, he was not intending to make something that would become very popular. He just wanted to make something he wanted to play. There was no business sense included, only his love involved in the creation. Somehow, what he wanted to create for himself was appreciated by others in this country and is shared by people in other countries. … And that’s the point: not to make something sell, something very popular, but to love something, and make something that we creators can love. It’s the very core feeling we should have in making games.”</p>
+</blockquote>
+<ul>
+<li>Shigeru Miyamoto, talking about the creation of Pokemon</li>
+</ul>
+</section><section id="what-is-game-design" class="slide level2">
+<h2>What is Game Design?</h2>
+<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-video-loop data-background-video-muted>
+<pre><code>&lt;h2&gt;Video&lt;/h2&gt;
+
+&lt;p&gt;fd dga  dggd&lt;/p&gt;</code></pre>
+</section>
+</section><section id="what-skills-does-a-game-designer-need" class="slide level2">
+<h2>What Skills Does a Game Designer Need?</h2>
+<ul>
+<li>Animation</li>
+<li>Anthropology</li>
+<li>Architecture</li>
+<li>Brainstorming</li>
+<li>Business</li>
+<li>Cinematography</li>
+<li>Communication</li>
+<li>Creative Writing</li>
+<li>Economics</li>
+<li>Engineering</li>
+<li>History</li>
+<li>Management</li>
+<li>Mathematics</li>
+<li>Music</li>
+<li>Psychology</li>
+<li>Public Speaking</li>
+<li>Sound Design</li>
+<li>Technical Writing</li>
+<li>Visual Arts</li>
+</ul>
+</section></section>
+<section><section id="summary" class="titleslide slide level1"><h1>Summary</h1></section><section id="thank-you" class="slide level2">
+<h2>Thank You</h2>
+
+</section><section id="references" class="slide level2 allowframebreaks">
+<h2>References</h2>
+</section></section>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="http://nabataea.net/games3.html" class="uri">http://nabataea.net/games3.html</a><a href="#/fnref1">↩</a></p></li>
+<li id="fn2"><p><a href="https://medium.com/swlh/the-full-history-of-board-games-5e622811ce89" class="uri">https://medium.com/swlh/the-full-history-of-board-games-5e622811ce89</a><a href="#/fnref2">↩</a></p></li>
+<li id="fn3"><p><a href="https://en.wikipedia.org/wiki/History_of_games" class="uri">https://en.wikipedia.org/wiki/History_of_games</a><a href="#/fnref3">↩</a></p></li>
+</ol>
+</section>
+    </div>
+  </div>
+
+  <script src="libs/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="libs/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'libs/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'libs/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
+          { src: 'libs/reveal.js-3.3.0.1/plugin/zoom-js/zoom.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
